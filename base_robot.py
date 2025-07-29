@@ -194,8 +194,8 @@ class BaseRobot:
 
     def moveLeftAttachmentMotorUntilStalled(
         self,
-        speedPct: int = DEFAULT_MED_MOT_SPEED_PCT,
-        stallPct: int = DEFAULT_STALL_PCT,
+        speedPct=DEFAULT_MED_MOT_SPEED_PCT,
+        stallPct=DEFAULT_STALL_PCT,
     ):
         """
         moveLeftAttachmentMotorUntillStalled moves \
@@ -209,8 +209,8 @@ class BaseRobot:
         negative numbers turn it to the left \
         """
 
-        speed = RescaleMedMotSpeed(speedPct)
-        load = RescaleMedMotTorque(stallPct)
+        speed: int = RescaleMedMotSpeed(speedPct)
+        load: int = RescaleMedMotTorque(stallPct)
         self.leftAttachmentMotor.run(speed)
         while abs(self.leftAttachmentMotor.load()) < load:
             wait(25)
@@ -224,8 +224,10 @@ class BaseRobot:
         wait=True,
     ):
         """
+        >>> moveRightAttachmentMotorForDegrees(degrees=66)
+    
         moveRightAttachmentMotorForDegrees moves the right attachment motor. \
-        to determine hoow much the motor moves you put in a number \
+        to determine how many degrees the motor moves when you put in a number \
         positive numbers make it go right negative numbers left. \
         Paramaters:
         -------------
@@ -324,8 +326,12 @@ class BaseRobot:
         gyro=True,
         accelerationPct=DEFAULT_BIG_MOT_ACCEL_PCT,
         wallsquare=False,
+        continuing=True,
     ):
         """
+        >>> br.driveForDistance(distance=100, speedPct=80, then=Stop.BRAKE, \
+            continuing=True)
+
         driveForDistance moves \
         the robot forward a certain amount \
         Paramaters:
@@ -347,7 +353,7 @@ class BaseRobot:
         to stop and then dont do anything \
         untill the next line of code \
         -------------
-        wait: this tells the robot if it should wait \
+        continuing: this tells the robot if it should wait \
         for the next line of code or \
         run both lines of code at the same time
         -------------
@@ -372,7 +378,7 @@ class BaseRobot:
             self.robot.brake()
 
         self.robot.settings(acceleration, speed)
-        self.robot.straight(distance, then)
+        self.robot.straight(distance, then, continuing)
 
     def driveForMillis(
         self,

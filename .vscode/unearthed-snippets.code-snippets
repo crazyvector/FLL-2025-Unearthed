@@ -15,12 +15,12 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"Drive Straight Distance": {
+	"Drive for Distance": {
 		"prefix": [
 			"dfd"
 		],
 		"body": [
-			"br.driveForDistance(distance=${1}, speedPct=${2:80}, then=${3:Stop.BRAKE}, wait=${4:True})"
+			"br.driveForDistance(distance=${1}, speedPct=${2:80}, then=${3:Stop.BRAKE}, continuing=${4:True})"
 		],
 		"description": "Drive the robot straight for a given distance"
 	},
@@ -98,5 +98,15 @@
 			"br.moveRightAttachmentMotorForDegrees(degrees=${1})"
 		],
 			"description": "moves left attachment motor for degrees "
+	},
+		"drive arc dist": {
+		"prefix": [
+			"dad"
+		],
+		"body": [
+			"br.driveArcDist(radius=${1},dist=${2},speedPct=${3:80},gyro=${5:True},wait=${7:True})"
+		],
+			"description": "moves left attachment motor for degrees "
 	}		
 }	
+	
