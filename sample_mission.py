@@ -1,4 +1,4 @@
-from base_robot import *
+from sadiebaserobot import *
 
 # Add good comments, such as what the mission is supposed to do,
 # how to align the robot in home, any initial starting instructions,
@@ -14,10 +14,13 @@ def Run(br: BaseRobot):
     # br.driveForDistance(distance=1000, speedPct=80, then=Stop.BRAKE,wallsquare=False)
     # br.driveArcDist(500,700,60)
     # br.driveForDistance(distance=400, speedPct=80, then=Stop.BRAKE)
-    br.driveArcDist(-350,-800)
+
+    br.turnInPlace(90)
     # br.waitForBackButton()
 
     # br.driveForDistance(150)
+
+
 # Leave everything below here and don't type anything below this line
 # If running this program directly (not from the master program), this is
 # how we know it is running directly. In which case, this method will
