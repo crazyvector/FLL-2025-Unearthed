@@ -415,6 +415,24 @@ class BaseRobot:
         gyro=True,
         accelerationPct=DEFAULT_BIG_MOT_ACCEL_PCT,
     ):
+        """
+        moves the robot either forward or backwards untill something is in its way and stops it
+
+        Example
+
+        >>> br.driveUntillStalled(SpeedPct=80)
+        >>> br.driveUntillStalled(accelerationPct=80)
+
+        speedPct (pos integer, optional): How fast to move. Defaults to \
+        DEFAULT_BIG_MOT_SPEED_PCT.
+
+        accelerationPct (pos integer, optional): How fast to change speed. \
+        Defaults to DEFAULT_TURN_ACCEL_PCT.
+
+        gyro (bool, optional): Use the gyro. Defaults to True.
+
+
+        """
         spd = RescaleStraightSpeed(speedPct)
         # print(spd)
         acceleration = RescaleStraightAccel(accelerationPct)
