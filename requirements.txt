@@ -1,0 +1,5 @@
+# Could also use a line such as pybricks==3.3.0a5
+# Consider each fall locking the version number to make sure everyone is 
+# on the same version.
+pybricks
+pybricksdev
