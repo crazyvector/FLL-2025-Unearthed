@@ -10,15 +10,49 @@ from base_robot import *
 def Run(br: BaseRobot):
     # Your mission code goes here, step-by-step
     # It MUST be indented just like the lines below
-    # br.driveForMillis(millis=125, speedPct=-60)
-    # br.driveForDistance(distance=1000, speedPct=80, then=Stop.BRAKE,wallsquare=False)
-    # br.driveArcDist(500,700,60)
-    # br.driveForDistance(distance=400, speedPct=80, then=Stop.BRAKE)
 
+    # dfd
+    br.driveForDistance(
+        distance=100, speedPct=80, then=Stop.BRAKE, waiting=True
+    )
+
+    # dfm
+    br.driveForMillis(millis=4000, speedPct=80)
+
+    # tip
     br.turnInPlace(90)
-    # br.waitForBackButton()
 
-    # br.driveForDistance(150)
+    # rmd
+    br.moveRightAttachmentMotorForDegrees(degrees=700, speedPct=80)
+
+    # rmm
+    br.moveRightAttachmentMotorForMillis(millis=7000, speedPct=80)
+
+    # lmd
+    br.moveLeftAttachmentMotorForDegrees(degrees=600, speedPct=80)
+
+    # lmm
+    br.moveLeftAttachmentMotorForMillis(millis=6000, speedPct=80)
+
+    # dad
+    br.driveArcDist(
+        radius=1000, dist=400, speedPct=80, then=Stop.BRAKE, waiting=True
+    )
+
+    # cur
+    br.curve(radius=1500, angle=70, speedPct=80, then=Stop.BRAKE, waiting=True)
+
+    # wbb
+    br.waitForBackButton()
+
+    # wfb
+    br.waitForForwardButton()
+
+    # lms
+    br.moveLeftAttachmentMotorUntilStalled(speedPct=80, stallPct=50)
+
+    # rms
+    br.moveRightAttachmentMotorUntilStalled(speedPct=80, stallPct=50)
 
 
 # Leave everything below here and don't type anything below this line

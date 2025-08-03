@@ -76,7 +76,7 @@
 			"lmm"
 		],
 		"body": [
-			"br.moveRightAttachmentMotorForMillis(millis=${1}, speedPct=${2:80})"
+			"br.moveLeftAttachmentMotorForMillis(millis=${1}, speedPct=${2:80})"
 		]
 	},
 	"Move left attachment motor for degrees": {
@@ -84,7 +84,7 @@
 			"lmd"
 		],
 		"body": [
-			"br.moveRightAttachmentMotorForDegrees(degrees=${1}, speedPct=${2:80})"
+			"br.moveLeftAttachmentMotorForDegrees(degrees=${1}, speedPct=${2:80})"
 		]
 	},
 	"Move left attachment motor until stalled": {
