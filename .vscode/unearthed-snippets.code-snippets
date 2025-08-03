@@ -20,9 +20,8 @@
 			"dfd"
 		],
 		"body": [
-			"br.driveForDistance(distance=${1}, speedPct=${2:80}, then=${3:Stop.BRAKE}, continuing=${4:True})"
-		],
-		"description": "Drive the robot straight for a given distance"
+			"br.driveForDistance(distance=${1}, speedPct=${2:80}, then=${3:Stop.BRAKE}, waiting=${4:True})"
+		]
 	},
 	"Turn in Place": {
 		"prefix": [
@@ -30,83 +29,94 @@
 		],
 		"body": [
 			"br.turnInPlace(angle=${1}, speedPct=${2:45})"
-		],
-		"description": "Turn the robot in-place"
+		]
 	},
-		"Drive for millisecons": {
+	"Drive for milliseconds": {
 		"prefix": [
 			"dfm"
 		],
 		"body": [
 			"br.driveForMillis(millis=${1}, speedPct=${2:80})"
-		],
-		"description": "drive for milliseconds"
+		]
 	},
-
-			"moveRightAttachmentMotorForMillis": {
+	"Move right attachment motor for time (millis)": {
 		"prefix": [
 			"rmm"
 		],
 		"body": [
-			"br.moveRightAttachmentMotorForMillis(millis=${1})"
-		],
-		"description": "moves Right Attachment Motor For Millies "
+			"br.moveRightAttachmentMotorForMillis(millis=${1}, speedPct=${2:80})"
+		]
 	},
-			"moveRightAttachmentMotorForDegres": {
+	"Move right attachment motor for degrees": {
 		"prefix": [
 			"rmd"
 		],
 		"body": [
-			"br.moveRightAttachmentMotorForDegrees(degrees=${1})"
-		],
-		"description": "moves Right Attachment Motor For Degrees "
+			"br.moveRightAttachmentMotorForDegrees(degrees=${1}, speedPct=${2:80})"
+		]
 	},
-		"wait for back button": {
-		"prefix": [
-			"wbb"
-		],
-		"body": [
-			"br.waitForBackButton()"
-		],
-		"description": "waits For Back Button "
-
-	},
-	"wait for forward button": {
+	"Wait for back button": {
 		"prefix": [
 			"wfb"
 		],
 		"body": [
-			"br.waitForForwardButton()"
-		],
-		"description": "waits For Forward Button "
+			"br.waitForBackButton()"
+		]
 	},
-
-			"move left attachment motor for millis": {
+	"Wait for forward button": {
+		"prefix": [
+			"wbb"
+		],
+		"body": [
+			"br.waitForForwardButton()"
+		]
+	},
+	"Move left attachment motor for time (millis)": {
 		"prefix": [
 			"lmm"
 		],
 		"body": [
-			"br.moveRightAttachmentMotorForMillis(millis=${1})"
-		],
-		"description": "moves left attachment motor for millies "
+			"br.moveRightAttachmentMotorForMillis(millis=${1}, speedPct=${2:80})"
+		]
 	},
-    	"move left attachment motor for degrees": {
+	"Move left attachment motor for degrees": {
 		"prefix": [
 			"lmd"
 		],
 		"body": [
-			"br.moveRightAttachmentMotorForDegrees(degrees=${1})"
-		],
-			"description": "moves left attachment motor for degrees "
+			"br.moveRightAttachmentMotorForDegrees(degrees=${1}, speedPct=${2:80})"
+		]
 	},
-		"drive arc dist": {
+	"Move left attachment motor until stalled": {
+		"prefix": [
+			"lms"
+		],
+		"body": [
+			"br.moveLeftAttachmentMotorUntilStalled(speedPct=${1:80}, stallPct=${2:50})"
+		]
+	},
+	"Move right attachment motor until stalled": {
+		"prefix": [
+			"rms"
+		],
+		"body": [
+			"br.moveRightAttachmentMotorUntilStalled(speedPct=${1:80}, stallPct=${2:50})"
+		]
+	},
+	"Drive along arc for distance": {
 		"prefix": [
 			"dad"
 		],
 		"body": [
-			"br.driveArcDist(radius=${1},dist=${2},speedPct=${3:80},gyro=${5:True},wait=${7:True})"
+			"br.driveArcDist(radius=${1}, dist=${2}, speedPct=${3:80}, then=${4:Stop.BRAKE}, waiting=${5:True})"
+		]
+	},
+	"Drive along curve for degrees": {
+		"prefix": [
+			"cur"
 		],
-			"description": "moves left attachment motor for degrees "
-	}		
-}	
-	
+		"body": [
+			"br.curve(radius=${1}, angle=${2}, speedPct=${3:80}, then=${4:Stop.BRAKE}, waiting=${5:True})"
+		]
+	}
+}

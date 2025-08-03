@@ -124,44 +124,48 @@ class BaseRobot:
         self,
         degrees: int,
         speedPct: int = DEFAULT_MED_MOT_SPEED_PCT,
-        then: Stop = Stop.HOLD,
-        wait: bool = True,
+        waiting: bool = True,
     ):
         """
-        moveLeftAttachmentMotorForDegrees moves the left attachment motor. \
-        to determine hoow much the motor moves you put in a number \
-        positive numbers make it go right negative numbers left. \
-        Paramaters:
-        -------------
-        degrees: how much the left attachment motor will turn \
-        positive numbers move the motor right \
-        negative numbers turn it to the left \
-        -------------
-        speedPct: this controls how fast the motors will move \
-        the speed is from 1-100 \
-        -------------
-        then: the then function tells the robot what to do next \
-        our default is stop.HOLD \
-        stop.HOLD tells the robot that when it stops to hold that position \
-        -------------
-        wait: this tells the robot if it should wait for the next step \
-        or run both lines of code at the same time
-         """
+        Moves the left attachment motor for a set amount of degrees
+
+        Snippet: lmd
+
+        Example:
+
+        >>> moveLeftAttachmentMotorForDegrees(degrees=50, speedPct=50)
+        >>> moveLeftAttachmentMotorForDegrees(degrees=50, waiting=False)
+        
+        Args:
+
+        degrees: (REQUIRED integer, != 0): how much the left attachment motor \
+        will turn. Positive numbers move the motor right; negative numbers \
+        turn it to the left
+
+        speedPct: (OPTIONAL integer, > 0): this controls how fast the motor \
+        will move
+
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for \
+        the next line of code or run both lines of code at the same time. \
+        Default is True, which means wait on this line until it is \
+        complete.
+        """
         # now the real work begins!
         speed = RescaleMedMotSpeed(speedPct)
-        self.leftAttachmentMotor.run_angle(speed, degrees, then, wait)
+        self.leftAttachmentMotor.run_angle(
+            speed=speed, rotation_angle=degrees, wait=waiting
+        )
 
     def moveLeftAttachmentMotorForMillis(
         self,
         millis: int,
         speedPct: int = DEFAULT_MED_MOT_SPEED_PCT,
-        then: Stop = Stop.HOLD,
-        wait: bool = True,
+        waiting: bool = True,
     ):
         """
         Moves the left attachment motor for a set amount of time
 
-        Snippet: lamt
+        Snippet: lmm
 
         Example:
 
@@ -171,26 +175,24 @@ class BaseRobot:
 
         Args:
 
-        millis (REQUIRED integer, > 0): how many miliseconds the left \
+        millis: (REQUIRED integer, > 0): how many miliseconds the left \
         attachment motor will turn for. A millisecond is 0.001 of a second, \
         so 5000 is 5 seconds.
 
-        speedPct (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
+        speedPct: (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
         the motor/motors will move. Positive numbers move the motor right, \
         negative numbers turn it to the left.
 
-        then (OPTIONAL Stop): the then function tells the robot what to do \
-        next. Our default is stop.HOLD, which tells the motor that when it \
-        stops to hold that position as much as it can.
-
-        wait (OPTIONAL bool): this tells the robot if it should wait for the \
-        next line of code or run both lines of code at the same time. \
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for 
+        the next line of code or run both lines of code at the same time. \
         Default is True, which means wait on this line until it is \
         complete.
 
         """
         speed: int = RescaleMedMotSpeed(speedPct)
-        self.leftAttachmentMotor.run_time(speed, millis, then, wait)
+        self.leftAttachmentMotor.run_time(
+            speed=speed, time=millis, wait=waiting
+        )
 
     def moveLeftAttachmentMotorUntilStalled(
         self,
@@ -198,15 +200,23 @@ class BaseRobot:
         stallPct=DEFAULT_STALL_PCT,
     ):
         """
-        moveLeftAttachmentMotorUntillStalled moves \
-        the left attachment motor untill it is stalled \
-        Paramaters:
-        -------------
-        speedPct: this controls how fast the motor/motors will move \
-        the speed percent is from -100 to 100 \
-        you can not put in zero \
-        positive numbers move the motor right \
-        negative numbers turn it to the left \
+        Moves the left attachment motor until it stalls
+
+        Snippet: lams
+
+        Example:
+
+        >>> moveLeftAttachmentMotorUntilStalled(speedPct=50, stallPct=75)
+
+        Args:
+
+        speedPct: (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
+        the motor/motors will move. Positive numbers move the motor right, \
+        negative numbers turn it to the left.
+
+        stallPct: (OPTIONAL integer, 1 to 100): How much torque before 
+        stopping and then continuing with the next line of code. Lower \
+        numbers means stopping with less torque.
         """
 
         speed: int = RescaleMedMotSpeed(speedPct)
@@ -218,46 +228,50 @@ class BaseRobot:
 
     def moveRightAttachmentMotorForDegrees(
         self,
-        degrees,
-        speedPct=DEFAULT_MED_MOT_SPEED_PCT,
-        then=Stop.HOLD,
-        wait=True,
+        degrees: int,
+        speedPct: int = DEFAULT_MED_MOT_SPEED_PCT,
+        waiting: bool = True,
     ):
         """
-        >>> moveRightAttachmentMotorForDegrees(degrees=66)
-    
-        moveRightAttachmentMotorForDegrees moves the right attachment motor. \
-        to determine how many degrees the motor moves when you put in a number \
-        positive numbers make it go right negative numbers left. \
-        Paramaters:
-        -------------
-        degrees: how much the right attachment motor will turn \
-        positive numbers move the motor right \
-        negative numbers turn it to the left \
-        -------------
-        speedPct: this controls how fast the motors will move \
-        the speed is from 1-100 \
-        -------------
-        then: the then function tells the robot what to do next \
-        our default is stop.HOLD \
-        stop.HOLD tells the robot that when it stops to hold that position \
-        -------------
-        wait: this tells the robot if it should wait for the next step \
-        or run both lines of code at the same time
-         """
+        Moves the right attachment motor for a set amount of degrees
+
+        Snippet: rmd
+
+        Example:
+
+        >>> moveRightAttachmentMotorForDegrees(degrees=50, speedPct=50)
+        >>> moveRightAttachmentMotorForDegrees(degrees=50, waiting=False)
+        
+        Args:
+
+        degrees: (REQUIRED integer, != 0): how much the right attachment motor \
+        will turn. Positive numbers move the motor right; negative numbers \
+        turn it to the left.
+
+        speedPct: (OPTIONAL integer, > 0): this controls how fast the motor \
+        will move
+
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for \
+        the next line of code or run both lines of code at the same time. \
+        Default is True, which means wait on this line until it is \
+        complete.
+        """
         # now the real work begins!
         speed = RescaleMedMotSpeed(speedPct)
-        self.rightAttachmentMotor.run_angle(speed, degrees, then, wait)
+        self.rightAttachmentMotor.run_angle(
+            speed=speed, rotation_angle=degrees, wait=waiting
+        )
 
     def moveRightAttachmentMotorForMillis(
         self,
-        millis,
-        speedPct=DEFAULT_MED_MOT_SPEED_PCT,
-        then=Stop.HOLD,
-        wait=True,
+        millis: int,
+        speedPct: int = DEFAULT_MED_MOT_SPEED_PCT,
+        waiting: bool = True,
     ):
         """
         Moves the right attachment motor for a set amount of time
+
+        Snippet: rmm
 
         Example:
 
@@ -265,52 +279,52 @@ class BaseRobot:
         >>> moveRightAttachmentMotorForMillis(millis=500, then=STOP.BRAKE)
         >>> moveRightAttachmentMotorForMillis(millis=500, wait=False)
 
-        Snippet: ramt
-
         Args:
 
-        millis (REQUIRED integer, > 0): how many miliseconds the right \
+        millis: (REQUIRED integer, > 0): how many miliseconds the right \
         attachment motor will turn for. A millisecond is 0.001 of a second, \
         so 5000 is 5 seconds.
+
+        speedPct: (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
+        the motor/motors will move. Positive numbers move the motor right, \
+        negative numbers turn it to the left.
+
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for \
+        the next line of code or run both lines of code at the same time. \
+        Default is True, which means wait on this line until it is \
+        complete.
+
+        """
+        speed: int = RescaleMedMotSpeed(speedPct)
+        self.rightAttachmentMotor.run_time(
+            speed=speed, time=millis, wait=waiting
+        )
+
+    def moveRightAttachmentMotorUntilStalled(
+        self,
+        speedPct: int = DEFAULT_MED_MOT_SPEED_PCT,
+        stallPct: int = DEFAULT_STALL_PCT,
+    ):
+        """
+        Moves the left attachment motor until it stalls
+
+        Snippet: rams
+
+        Example:
+
+        >>> moveLeftAttachmentMotorUntilStalled(speedPct=50, stallPct=75)
+
+        Args:
 
         speedPct (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
         the motor/motors will move. Positive numbers move the motor right, \
         negative numbers turn it to the left.
 
-        then (OPTIONAL Stop): the then function tells the robot what to do \
-        next. Our default is stop.HOLD, which tells the motor that when it \
-        stops to hold that position as much as it can.
-
-        wait (OPTIONAL bool): this tells the robot if it should wait for the \
-        next line of code or run both lines of code at the same time. \
-        Default is True, which means wait on this line until it is \
-        complete.
-
+        stallPct (OPTIONAL integer, 1 to 100): How much torque before stopping \
+        and then continuing with the next line of code. Lower numbers means \
+        stopping with less torque.
         """
-        speed = RescaleMedMotSpeed(speedPct)
-        self.rightAttachmentMotor.run_time(speed, millis, then, wait)
 
-    def moveRightAttachmentMotorUntilStalled(
-        self, speedPct=DEFAULT_MED_MOT_SPEED_PCT, stallPct=DEFAULT_STALL_PCT
-    ):
-        """
-        Moves the right attachment motor untill it is stalled
-
-        Example:
-
-        >>> moveRightAttachmentMotorUntilStalled() # uses defaults
-        >>> moveRightAttachmentMotorUntilStalled(speedPct=20)
-        >>> moveRightAttachmentMotorUntilStalled(speedPct=30, stallPct=75)
-
-        Args:
-
-        speedPct (OPTIONAL integer, -100 to 100, except 0): Sets how fast the \
-        motor/motors will move.
-
-        stallPct (OPTIONAL integer, 1 to 100): How much torque before \
-        stalling. Lower numbers means stalls with less torque.
-
-        """
         speed: int = RescaleMedMotSpeed(speedPct)
         load: int = RescaleMedMotTorque(stallPct)
         self.rightAttachmentMotor.run(speed)
@@ -320,54 +334,57 @@ class BaseRobot:
 
     def driveForDistance(
         self,
-        distance,
-        speedPct=DEFAULT_BIG_MOT_SPEED_PCT,
-        then=Stop.BRAKE,
-        gyro=True,
-        accelerationPct=DEFAULT_BIG_MOT_ACCEL_PCT,
-        wallsquare=False,
-        continuing=True,
+        distance: int,
+        speedPct: int = DEFAULT_BIG_MOT_SPEED_PCT,
+        then: Stop = Stop.BRAKE,
+        gyro: bool = True,
+        accelerationPct: int = DEFAULT_BIG_MOT_ACCEL_PCT,
+        wallsquare: bool = False,
+        waiting: bool = True,
     ):
-        """
+        """Drive the robot for a specified distance
+
+        Snippet: dfd
+        
+        Example:
+        >>> br.driveForDistance(distance=100, speedPct=80) # drive 100mm at \
+        80% speed
         >>> br.driveForDistance(distance=100, speedPct=80, then=Stop.BRAKE, \
             continuing=True)
 
-        driveForDistance moves \
-        the robot forward a certain amount \
-        Paramaters:
-        -------------
-        distance: how far forward the robot will move \
-        positive numbers move it forward \
-        and negative numbers move the robot backward \
-        -------------
-        speedPct: this controls how fast the robot will move \
-        the speed percent is from -100 to 100 \
-        the code will not let you put in zero \
-        positive numbers move the robot forward \
-        negative numbers move the robot backward \
-        -------------
-        then: this function tells the robot what to do \
-        after the current line of code is done running \
-        our default for then is stop.BRAKE \
-        stop.BRAKE tells the robot that when it stops \
-        to stop and then dont do anything \
-        untill the next line of code \
-        -------------
-        continuing: this tells the robot if it should wait \
-        for the next line of code or \
-        run both lines of code at the same time
-        -------------
-        gyro: gyro is used most of the time during our code \
-        this function gives us the option to turn off gyro \
-        if we need to for some reason \
-        gyro is a tool that looks at whats in front of it \
-        and as the robot is moving gyro will make sure that \
-        the robot is more acurate than before \
-        -------------
-        accelerationPct: this function tells the robot \
-        how much acceleration the robot will have \
-        while it is driving \
-        the acceleration is on a 1-100 scale \
+        Args:
+
+        distance: (REQUIRED integer, != 0): how far the robot will move in \
+        millimeters. Positive numbers move it forward; negative numbers \
+        move the robot backward \
+
+        speedPct: (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
+        the motor/motors will move. Positive numbers move the motor right, \
+        negative numbers turn it to the left.
+
+        then: (OPTIONAL, Stop.HOLD|Stop.BRAKE|Stop.NONE|Stop.COAST): What the \
+        drive motors will do after the robot has driven the distance. \
+        Stop.BRAKE, Passively resist small external forces. \
+        Stop.HOLD, Keep controlling the motor to hold it at the commanded \
+        angle. \
+        Stop.COAST, Allow the motor to coast freely until it stops. \
+        Stop.NONE, Do not control the motor at all (use when chaining drive \
+            commands).
+
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for \
+        the next line of code or run both lines of code at the same time. \
+        Default is True, which means wait on this line until it is \
+        complete.
+
+        gyro: (OPTIONAL bool): Use the gyro. Defaults to True. Set to False \
+        when you do not want to use the gyro such as when you are wall \
+        following.
+
+        accelerationPct: (OPTIONAL int > 0) How fast the robot accelerates
+
+        wallsquare: (OPTIONAL bool): If True, the robot will back up very \
+        briefly before driving forward. Useful to take the slack out of the \
+        motors and square up against a wall. \
         """
         speed = RescaleStraightSpeed(speedPct)
         acceleration = RescaleStraightAccel(accelerationPct)
@@ -378,7 +395,7 @@ class BaseRobot:
             self.robot.brake()
 
         self.robot.settings(acceleration, speed)
-        self.robot.straight(distance, then, continuing)
+        self.robot.straight(distance, then, waiting)
 
     def driveForMillis(
         self,
@@ -389,21 +406,26 @@ class BaseRobot:
     ):
         """Drives the robot for the given amount of millis 
 
+        Snippet: dfm
+
         Example:
         >>> driveForMillis(millis=1000) #drive the robot for one sec
         
         Args:
-        millis (REQUIRED, integer): the millis is the time you set \
-        1000 millis = 1sec
 
-        speedPct (OPTIONAL,intteger): the speed the robot goes during the \
-        millis
+        millis: (REQUIRED integer, > 0): how many miliseconds the \
+        robot will drive. A millisecond is 0.001 of a second, \
+        so 5000 millis is 5 seconds.
 
-        gyro (OPTIONAL, interger):  Use the gyro. Defaults to True
+        speedPct: (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
+        the robot will drive. Positive numbers move the robot forward, \
+        negative numbers move it backwards.
 
-        accelerationPct (OPTIONAL, integer): the percent of how\
-        fast the robot goes during the millis
-    
+        gyro: (OPTIONAL bool): Use the gyro. Defaults to True. Set to False \
+        when you do not want to use the gyro such as when you are wall \
+        following.
+
+        accelerationPct: (OPTIONAL int > 0) How fast the robot accelerates
         """
         speed = RescaleStraightSpeed(speedPct)
         acceleration = RescaleStraightAccel(accelerationPct)
@@ -413,31 +435,37 @@ class BaseRobot:
         wait(millis)
         self.robot.brake()
 
-    def driveUntilStalled(
-        self,
-        # stallPct=DEFAULT_STALL_PCT,
-        # think about above line later
-        speedPct=DEFAULT_BIG_MOT_SPEED_PCT,
-        gyro=True,
-        accelerationPct=DEFAULT_BIG_MOT_ACCEL_PCT,
-    ):
-        spd = RescaleStraightSpeed(speedPct)
-        # print(spd)
-        acceleration = RescaleStraightAccel(accelerationPct)
-        self.robot.use_gyro(gyro)
-        # self.robot.settings(straight_speed=-999)
-        self.robot.settings(straight_acceleration=acceleration)
-        self.robot.drive(spd, 0)
-        while not self.robot.stalled():
-            wait(50)
-        self.robot.brake()
-
     def waitForMillis(self, millis):
+        """Wait for a specified number of milliseconds before continuing
+
+        Snippet: wfm
+
+        Example:
+        >>> waitForMillis(1000) # wait for 1 second
+        >>> waitForMillis(500)  # wait for half second
+
+        Args:
+        millis (REQUIRED integer): Number of milliseconds to wait. \
+        1000 milliseconds = 1 second
+        """
         wait(millis)
 
     def waitForForwardButton(
         self,
     ):
+        """Pause program execution until the forward (LEFT) button is \
+        pressed. This is typically used at the start of a mission to wait \
+        for user confirmation before starting.
+
+        Snippet: wfb
+
+        Example:
+        >>> waitForForwardButton() # wait for button press to continue
+
+        Args:
+        None
+
+        """
         while True:
             pressed = self.hub.buttons.pressed()
             if Button.LEFT in pressed:
@@ -447,6 +475,18 @@ class BaseRobot:
     def waitForBackButton(
         self,
     ):
+        """Pause program execution until the back (RIGHT) button is \
+        pressed. This is typically used at the start of a mission to wait \
+        for user confirmation before starting.
+
+        Snippet: wbb
+
+        Example:
+        >>> waitForBackButton() # wait for button press to continue
+
+        This is typically used at the start of a mission to wait for
+        user confirmation before starting.
+        """
         while True:
             pressed = self.hub.buttons.pressed()
             if Button.RIGHT in pressed:
@@ -455,40 +495,76 @@ class BaseRobot:
 
     def turnInPlace(
         self,
-        angle,
-        speedPct=DEFAULT_TURN_SPEED_PCT,
-        gyro=True,
-        wait=True,
-        then=Stop.BRAKE,
-        accelerationPct=DEFAULT_TURN_ACCEL_PCT,
+        angle: int,
+        speedPct: int = DEFAULT_TURN_SPEED_PCT,
+        gyro: bool = True,
+        waiting: bool = True,
+        then: Stop = Stop.BRAKE,
+        accelerationPct: int = DEFAULT_TURN_ACCEL_PCT,
     ):
-        """
-        This is
+        """Turn the robot in place by a specified angle
 
+        Snippet: tip
+
+        Example:
+        >>> turnInPlace(90) # turn 90 degrees right
+        >>> turnInPlace(-45) # turn 45 degrees left
+        >>> turnInPlace(180, speedPct=30) # slow 180 degree turn
+
+        Args:
+
+        angle (REQUIRED integer): How many degrees to turn. \
+            Positive numbers turn right, negative numbers turn left.
+
+        speedPct: (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
+        the robot will turn. Positive numbers turn the robot to the right; \
+        negative numbers turn it to the left. Default is DEFAULT_TURN_SPEED_PCT.
+
+        gyro: (OPTIONAL bool): Use the gyro. Defaults to True. Rarely set to \
+        False only when you do not want to use the gyro for some reason
+
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for \
+        the next line of code or run both lines of code at the same time. \
+        Default is True, which means wait on this line until it is \
+        complete.
+
+        then: (OPTIONAL, Stop.HOLD|Stop.BRAKE|Stop.NONE|Stop.COAST): What the \
+        drive motors will do after the robot has turned in place. \
+        Stop.BRAKE (Default), Passively resist small external forces. \
+        Stop.HOLD, Keep controlling the motor to hold it at the commanded \
+        angle. \
+        Stop.COAST, Allow the motor to coast freely until it stops. \
+        Stop.NONE, Do not control the motor at all (use when chaining drive \
+            commands).
+
+        accelerationPct: (OPTIONAL int > 0) How fast the robot accelerates
         """
         speed = RescaleTurnSpeed(speedPct)
         acceleration = RescaleTurnAccel(accelerationPct)
         self.robot.use_gyro(gyro)
         self.robot.settings(acceleration, speed)
-        self.robot.turn(angle, then, wait)
+        self.robot.turn(angle, then, waiting)
 
     def curve(
         self,
-        radius,
-        angle,
-        speedPct=DEFAULT_BIG_MOT_SPEED_PCT,
-        then=Stop.BRAKE,
-        wait=True,
-        gyro=True,
-        accelerationPct=DEFAULT_TURN_ACCEL_PCT,
+        radius: int,
+        angle: int,
+        speedPct: int = DEFAULT_BIG_MOT_SPEED_PCT,
+        then: Stop = Stop.BRAKE,
+        waiting: bool = True,
+        gyro: bool = True,
+        accelerationPct: int = DEFAULT_TURN_ACCEL_PCT,
     ):
-        """Drive the robot in a curve
+        """Drive the robot in a curve, given the radius and angle
+
+        Snippet: cur
 
         Example:
 
-        >>> curve(radius=350, angle=-60) # curve forward to the left
-        >>> curve(radius=170, angle=60, speedPct=40)
-        >>> curve(radius=-200, angle=45, wait=False)
+        >>> curve(radius=350, angle=-60 ↰) # curve forward to the left
+        >>> curve(radius=350, angle=60 ↱) # curve forward to the right
+        >>> curve(radius=-350, angle=-60 ↲) # curve backward to the left
+        >>> curve(radius=-350, angle=60 ↳) # curve backward to the right
 
         Args:
 
@@ -498,81 +574,90 @@ class BaseRobot:
         angle (REQUIRED, integer): Number of degrees to drive along the curve. \
         POS = right; NEG = left
 
-        speedPct (pos integer, optional): How fast to drive. Defaults to \
+        speedPct (OPTIONAL, integer > 0): How fast to drive. Defaults to \
         DEFAULT_BIG_MOT_SPEED_PCT.
 
-        then (Stop(), optional): What kind of Stop. Defaults to Stop.BRAKE.
+        then: (OPTIONAL, Stop.HOLD|Stop.BRAKE|Stop.NONE|Stop.COAST): What the \
+        drive motors will do after the robot has turned in place. \
+        Stop.BRAKE (Default), Passively resist small external forces. \
+        Stop.HOLD, Keep controlling the motor to hold it at the commanded \
+        angle. \
+        Stop.COAST, Allow the motor to coast freely until it stops. \
+        Stop.NONE, Do not control the motor at all (use when chaining drive \
+            commands).
 
-        wait (bool, optional): Control whether execution stays on this line \
-        until finished or not. Defaults to True, which means stay on this \
-        line. wait = False means exection can move on to the next line \
-        immediately and not have to wait for it to finish. We often use this \
-        to run attachment motors while the robot is driving.
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for \
+        the next line of code or run both lines of code at the same time. \
+        Default is True, which means wait on this line until it is \
+        complete.
 
         gyro (bool, optional): Use the gyro. Defaults to True.
 
-        accelerationPct (pos integer, optional): How fast to change speed. \
-        Defaults to DEFAULT_TURN_ACCEL_PCT.
+        accelerationPct: (OPTIONAL int > 0) How fast the robot accelerates
 
         """
         speed = RescaleStraightSpeed(speedPct)
         acceleration = RescaleTurnAccel(accelerationPct)
         self.robot.use_gyro(gyro)
         self.robot.settings(acceleration, speed)
-        self.robot.curve(radius, angle, then, wait)
+        self.robot.arc(radius=radius, angle=angle, then=then, wait=waiting)
 
     def driveArcDist(
         self,
-        radius,
-        dist,
-        speedPct=DEFAULT_BIG_MOT_SPEED_PCT,
-        accelPct=DEFAULT_BIG_MOT_ACCEL_PCT,
-        gyro=True,
-        then=Stop.BRAKE,
-        wait=True,
+        radius: int,
+        dist: int,
+        speedPct: int = DEFAULT_BIG_MOT_SPEED_PCT,
+        accelPct: int = DEFAULT_BIG_MOT_ACCEL_PCT,
+        gyro: bool = True,
+        then: Stop = Stop.BRAKE,
+        waiting: bool = True,
     ):
-        """Drive the robot in an arc
-
-        Example:
-
-        >>> driveArcDist(radius=350, dist=60) # curve forward to the right
-        >>> driveArcDist(radius=170, dist=-160, speedPct=40)
-        >>> driveArcDist(radius=-200, dist=45, wait=False, then=Stop.NONE)
+        """Drive the robot in an arc for a specified distance
 
         Snippet: dad
 
+        Example:
+        >>> driveArcDist(radius=350, dist=-60 ↰) # curve forward to the left
+        >>> driveArcDist(radius=350, dist=60 ↱) # curve forward to the right
+        >>> driveArcDist(radius=-350, dist=-60 ↲) # curve backward to the left
+        >>> driveArcDist(radius=-350, dist=60 ↳) # curve backward to the right
+
         Args:
+        
+        radius (REQUIRED integer): Radius of the arc in mm. \
+        Positive = forward arc, negative = backward arc.
 
-        radius (REQUIRED, integer): How tight of a curve in mm. POS = curve \
-        right; NEG = curve left. Smaller numbers means tighter curve.
+        dist (REQUIRED integer): Distance to drive along the arc in mm.
 
-        dist (REQUIRED, integer): Number of mm to drive along the curve. \
-        POS = forward; NEG = reverse
+        speedPct: (OPTIONAL integer, -100 to 100, except 0): Controls how fast \
+        the motor/motors will move. Positive numbers move the motor right, \
+        negative numbers turn it to the left.
 
-        speedPct (OPTIONAL, pos integer): How fast to drive. Defaults to \
-        DEFAULT_BIG_MOT_SPEED_PCT.
+        then: (OPTIONAL, Stop.HOLD|Stop.BRAKE|Stop.NONE|Stop.COAST): What the \
+        drive motors will do after the robot has driven the distance. \
+        Stop.BRAKE, Passively resist small external forces. \
+        Stop.HOLD, Keep controlling the motor to hold it at the commanded \
+        angle. \
+        Stop.COAST, Allow the motor to coast freely until it stops. \
+        Stop.NONE, Do not control the motor at all (use when chaining drive \
+            commands).
 
-        then (OPTIONAL, Stop()): What kind of Stop. Defaults to Stop.BRAKE. \
-        Stop.NONE works great when chaining multiple movements together.
+        waiting: (OPTIONAL bool): this tells the robot if it should wait for \
+        the next line of code or run both lines of code at the same time. \
+        Default is True, which means wait on this line until it is \
+        complete.
 
-        wait (OPTIONAL, bool): Control whether execution stays on this line \
-        until finished or not. Defaults to True, which means stay on this \
-        line. wait = False means exection can move on to the next line \
-        immediately and not have to wait for it to finish. We often use this \
-        to run attachment motors while the robot is driving.
+        gyro: (OPTIONAL bool): Use the gyro. Defaults to True. Set to False \
+        when you do not want to use the gyro such as when you are wall \
+        following.
 
-        gyro (OPTIONAL, bool): Use the gyro or not. Defaults to True, which \
-        means use the gyro.
-
-        accelPct (OPTIONAL, pos integer): How fast to change speed. \
-        Defaults to DEFAULT_TURN_ACCEL_PCT.
-
+        accelerationPct: (OPTIONAL int > 0) How fast the robot accelerates
         """
         speed = RescaleStraightSpeed(speedPct)
         accel = RescaleStraightAccel(accelPct)
         self.robot.use_gyro(gyro)
         self.robot.settings(straight_speed=speed, straight_acceleration=accel)
-        self.robot.arc(radius=radius, distance=dist, then=then, wait=wait)
+        self.robot.arc(radius=radius, distance=dist, then=then, wait=waiting)
 
 
 # This BaseRobot class file is not meant to be run like the mission files.
