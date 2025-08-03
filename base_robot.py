@@ -29,15 +29,48 @@ DEFAULT_STALL_PCT = 50
 
 class BaseRobot:
     """
-    A collection of methods and Spike Prime for FLL Team 24277. \
-    Uses pybricks for most functionality.
-
-    Example:
-
-    >>> from base_robot import *
-    >>> br = BaseRobot()
-    >>> br.driveForDistance(400) #400mm at default speed
-    >>> br.turnInPlace(90) #90 deg to the right
+    BaseRobot provides a comprehensive set of methods and attributes for \
+        controlling an FLL Team 24277 robot using the pybricks library.
+    This class abstracts common robot operations such as driving, turning, \
+        and manipulating attachments, as well as color detection and user \
+        input handling. It is designed to simplify mission programming and \
+        ensure consistent robot behavior.
+    Features:
+    - Initializes motors, sensors, and color profiles for reliable operation.
+    - Provides high-level movement commands (drive, turn, curve, arc) with \
+        support for speed, acceleration, and gyro control.
+    - Includes methods for precise control of left and right attachment \
+        motors (by degrees, time, or until stalled).
+    - Supports color detection with custom HSV profiles for robust field \
+        color recognition.
+    - Offers utility methods for waiting (delays, button presses) to \
+        synchronize robot actions with user input or field events.
+    - Allows easy mapping between custom color profiles and pybricks default \
+        colors for hub light feedback.
+    Example usage:
+        >>> from base_robot import *
+        >>> br = BaseRobot()
+        >>> br.driveForDistance(distance=200, speedPct=80)
+        >>> br.moveLeftAttachmentMotorForDegrees(degrees=90)
+    Attributes:
+        hub (PrimeHub): The main hub object for robot control.
+        leftDriveMotor (Motor): Motor controlling the left drive wheel.
+        rightDriveMotor (Motor): Motor controlling the right drive wheel.
+        robot (DriveBase): DriveBase object for coordinated driving.
+        leftAttachmentMotor (Motor): Motor for the left attachment.
+        rightAttachmentMotor (Motor): Motor for the right attachment.
+        colorSensor (ColorSensor): Color sensor for field color detection.
+        sensorColors (list[Color]): List of custom color profiles detectable \
+            by the color sensor.
+        myColor2DefaultColorDict (dict[Color, Color]): Mapping from custom \
+            color profiles to pybricks default colors.
+    Note:
+        - All movement methods accept optional parameters for speed, \
+            acceleration, and waiting for completion.
+        - Color profiles should be calibrated for your specific field and \
+            lighting conditions.
+        - Use the provided snippet names (e.g., 'dfd', 'lmd') for quick code \
+            insertion in compatible editors.
     """
 
     def __init__(self):
