@@ -481,7 +481,7 @@ class BaseRobot:
         millis (REQUIRED integer): Number of milliseconds to wait. \
         1000 milliseconds = 1 second
         """
-        wait(millis)
+        wait(time=millis)
 
     def waitForForwardButton(
         self,

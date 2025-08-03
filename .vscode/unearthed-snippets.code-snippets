@@ -118,5 +118,13 @@
 		"body": [
 			"br.curve(radius=${1}, angle=${2}, speedPct=${3:80}, then=${4:Stop.BRAKE}, waiting=${5:True})"
 		]
+	},
+	"Wait for milliseconds": {
+		"prefix": [
+			"wfm"
+		],
+		"body": [
+			"br.waitForMillis(millis=${1})"
+		]
 	}
 }

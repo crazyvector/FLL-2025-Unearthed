@@ -54,6 +54,9 @@ def Run(br: BaseRobot):
     # rms
     br.moveRightAttachmentMotorUntilStalled(speedPct=80, stallPct=50)
 
+    # wfm
+    br.waitForMillis(millis=5000)
+
 
 # Leave everything below here and don't type anything below this line
 # If running this program directly (not from the master program), this is
