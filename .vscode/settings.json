@@ -6,6 +6,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
+        "**/app-list.json": true,
         "**/.venv/": true,
         "**/.vscode/": true,
         "**/__pycache__/": true,
