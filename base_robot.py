@@ -76,6 +76,7 @@ class BaseRobot:
     # type ignore comments needed to supress type checking errors within
     # pybricks library. These are not needed in the actual code, but
     # are needed for type checking tools like mypy or pyright.
+    # https://github.com/orgs/pybricks/discussions/2164
     def __init__(self):
         self.hub: PrimeHub = 
             PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
@@ -112,6 +113,11 @@ class BaseRobot:
         # in comments. Theoretically, the farther apart the hsv-values are,
         # the less likely two colors can get "confused"
         # Use the colorTest.py program to get the color sensor values
+
+        # type: ignore comments needed to supress type checking errors.
+        # Result of a known bug in the pybricks library.
+        # https://github.com/orgs/pybricks/discussions/2098
+
         # WHITE default: h=0,s=0,v=100
         Color.SENSOR_WHITE = Color(h=0, s=0, v=100)  # type: ignore 
 
