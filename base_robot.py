@@ -73,8 +73,11 @@ class BaseRobot:
             insertion in compatible editors.
     """
 
+    # type ignore comments needed to supress type checking errors within
+    # pybricks library. These are not needed in the actual code, but
+    # are needed for type checking tools like mypy or pyright.
     def __init__(self):
-        self.hub: PrimeHub = PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)
+        self.hub: PrimeHub = PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
         print(version)
         v: int = self.hub.battery.voltage()
         vPct: int = RescaleBatteryVoltage(v)
@@ -108,30 +111,30 @@ class BaseRobot:
         # in comments. Theoretically, the farther apart the hsv-values are,
         # the less likely two colors can get "confused"
         # Use the colorTest.py program to get the color sensor values
-        Color.SENSOR_WHITE = Color(h=0, s=0, v=100)  # h=0,s=0,v=100
-        Color.SENSOR_RED = Color(h=353, s=82, v=92)  # h=0,s=100,v=100
-        Color.SENSOR_YELLOW = Color(h=60, s=60, v=100)  # h=60,s=100,v=100
-        Color.SENSOR_GREEN = Color(h=156, s=66, v=66)  # h=120,s=100,v=100
-        Color.SENSOR_BLUE = Color(h=216, s=84, v=83)  # h=240,s=100,v=100
-        Color.SENSOR_MAGENTA = Color(h=333, s=75, v=78)  # h=300,s=100,v=100
-        Color.SENSOR_ORANGE = Color(h=8, s=75, v=100)  # h=30,s=100,v=100
-        Color.SENSOR_DARKGRAY = Color(h=192, s=21, v=64)  # h=0,s=0,v=50
-        Color.SENSOR_NONE = Color(h=170, s=26, v=15)  # h=0,s=0,v=0
-        Color.SENSOR_LIME = Color(h=92, s=55, v=93)  # h=92, s=57, v=93
+        Color.SENSOR_WHITE = Color(h=0, s=0, v=100)  # type: ignore # h=0,s=0,v=100
+        Color.SENSOR_RED = Color(h=353, s=82, v=92)  # type: ignore # h=0,s=100,v=100
+        Color.SENSOR_YELLOW = Color(h=60, s=60, v=100)  # type: ignore # h=60,s=100,v=100
+        Color.SENSOR_GREEN = Color(h=156, s=66, v=66)  # type: ignore # h=120,s=100,v=100
+        Color.SENSOR_BLUE = Color(h=216, s=84, v=83)  # type: ignore # h=240,s=100,v=100
+        Color.SENSOR_MAGENTA = Color(h=333, s=75, v=78)  # type: ignore # h=300,s=100,v=100
+        Color.SENSOR_ORANGE = Color(h=8, s=75, v=100)  # type: ignore # h=30,s=100,v=100
+        Color.SENSOR_DARKGRAY = Color(h=192, s=21, v=64)  # type: ignore # h=0,s=0,v=50
+        Color.SENSOR_NONE = Color(h=170, s=26, v=15)  # type: ignore # h=0,s=0,v=0
+        Color.SENSOR_LIME = Color(h=92, s=55, v=93)  # type: ignore # h=92, s=57, v=93
 
         # Put the custom colors in a list. Best practice is to only use
         # colors that we are using for actual missions.
         self.sensorColors: list[Color] = [
-            Color.SENSOR_WHITE,
-            Color.SENSOR_RED,
-            Color.SENSOR_YELLOW,
-            Color.SENSOR_GREEN,
-            Color.SENSOR_BLUE,
-            Color.SENSOR_MAGENTA,
-            Color.SENSOR_ORANGE,
-            Color.SENSOR_DARKGRAY,
-            Color.SENSOR_NONE,  # must have SENSOR_NONE. Do not comment
-            Color.SENSOR_LIME,
+            Color.SENSOR_WHITE,  # type: ignore
+            Color.SENSOR_RED,  # type: ignore
+            Color.SENSOR_YELLOW,  # type: ignore
+            Color.SENSOR_GREEN,  # type: ignore
+            Color.SENSOR_BLUE,  # type: ignore
+            Color.SENSOR_MAGENTA,  # type: ignore
+            Color.SENSOR_ORANGE,  # type: ignore
+            Color.SENSOR_DARKGRAY,  # type: ignore
+            Color.SENSOR_NONE,  # must have SENSOR_NONE. Do not comment # type: ignore
+            Color.SENSOR_LIME,  # type: ignore
         ]
 
         # Set the detectable colors usisng our list
@@ -141,16 +144,16 @@ class BaseRobot:
         # Used to set the hub light to the correct color. It dodesn't
         # matter if there are extra colors in here that won't be detected
         self.myColor2DefaultColorDict: dict[Color, Color] = {
-            Color.SENSOR_GREEN: Color.GREEN,
-            Color.SENSOR_RED: Color.RED,
-            Color.SENSOR_YELLOW: Color.YELLOW,
-            Color.SENSOR_BLUE: Color.BLUE,
-            Color.SENSOR_MAGENTA: Color.MAGENTA,
-            Color.SENSOR_WHITE: Color.WHITE,
-            Color.SENSOR_ORANGE: Color.ORANGE,
-            Color.SENSOR_DARKGRAY: Color.GRAY,
-            Color.SENSOR_NONE: Color.NONE,
-            Color.SENSOR_LIME: Color.CYAN,
+            Color.SENSOR_GREEN: Color.GREEN,  # type: ignore
+            Color.SENSOR_RED: Color.RED,  # type: ignore
+            Color.SENSOR_YELLOW: Color.YELLOW,  # type: ignore
+            Color.SENSOR_BLUE: Color.BLUE,  # type: ignore
+            Color.SENSOR_MAGENTA: Color.MAGENTA,  # type: ignore
+            Color.SENSOR_WHITE: Color.WHITE,  # type: ignore
+            Color.SENSOR_ORANGE: Color.ORANGE,  # type: ignore
+            Color.SENSOR_DARKGRAY: Color.GRAY,  # type: ignore
+            Color.SENSOR_NONE: Color.NONE,  # type: ignore
+            Color.SENSOR_LIME: Color.CYAN,  # type: ignore
         }
 
     def moveLeftAttachmentMotorForDegrees(
