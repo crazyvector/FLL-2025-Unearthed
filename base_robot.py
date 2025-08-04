@@ -77,7 +77,8 @@ class BaseRobot:
     # pybricks library. These are not needed in the actual code, but
     # are needed for type checking tools like mypy or pyright.
     def __init__(self):
-        self.hub: PrimeHub = PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
+        self.hub: PrimeHub = 
+            PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
         print(version)
         v: int = self.hub.battery.voltage()
         vPct: int = RescaleBatteryVoltage(v)
@@ -111,16 +112,35 @@ class BaseRobot:
         # in comments. Theoretically, the farther apart the hsv-values are,
         # the less likely two colors can get "confused"
         # Use the colorTest.py program to get the color sensor values
-        Color.SENSOR_WHITE = Color(h=0, s=0, v=100)  # type: ignore # h=0,s=0,v=100
-        Color.SENSOR_RED = Color(h=353, s=82, v=92)  # type: ignore # h=0,s=100,v=100
-        Color.SENSOR_YELLOW = Color(h=60, s=60, v=100)  # type: ignore # h=60,s=100,v=100
-        Color.SENSOR_GREEN = Color(h=156, s=66, v=66)  # type: ignore # h=120,s=100,v=100
-        Color.SENSOR_BLUE = Color(h=216, s=84, v=83)  # type: ignore # h=240,s=100,v=100
-        Color.SENSOR_MAGENTA = Color(h=333, s=75, v=78)  # type: ignore # h=300,s=100,v=100
-        Color.SENSOR_ORANGE = Color(h=8, s=75, v=100)  # type: ignore # h=30,s=100,v=100
-        Color.SENSOR_DARKGRAY = Color(h=192, s=21, v=64)  # type: ignore # h=0,s=0,v=50
-        Color.SENSOR_NONE = Color(h=170, s=26, v=15)  # type: ignore # h=0,s=0,v=0
-        Color.SENSOR_LIME = Color(h=92, s=55, v=93)  # type: ignore # h=92, s=57, v=93
+        # WHITE default: h=0,s=0,v=100
+        Color.SENSOR_WHITE = Color(h=0, s=0, v=100)  # type: ignore 
+
+        # RED default: h=0,s=100,v=100
+        Color.SENSOR_RED = Color(h=353, s=82, v=92)  # type: ignore 
+        
+        # YELLOW default: h=60,s=100,v=100
+        Color.SENSOR_YELLOW = Color(h=60, s=60, v=100)  # type: ignore 
+        
+        # GREEN default: h=120,s=100,v=100
+        Color.SENSOR_GREEN = Color(h=156, s=66, v=66)  # type: ignore 
+
+        # BLUE default: h=240,s=100,v=100
+        Color.SENSOR_BLUE = Color(h=216, s=84, v=83)  # type: ignore 
+
+        # MAGENTA default: h=300,s=100,v=100
+        Color.SENSOR_MAGENTA = Color(h=333, s=75, v=78)  # type: ignore 
+
+        # ORANGE default: h=30,s=100,v=100
+        Color.SENSOR_ORANGE = Color(h=8, s=75, v=100)  # type: ignore 
+        
+        # DARKGRAY default: h=0,s=0,v=50
+        Color.SENSOR_DARKGRAY = Color(h=192, s=21, v=64)  # type: ignore 
+
+        # NONE default: h=0,s=0,v=0
+        Color.SENSOR_NONE = Color(h=170, s=26, v=15)  # type: ignore 
+
+        # LIME default: h=92, s=57, v=93
+        Color.SENSOR_LIME = Color(h=92, s=55, v=93)  # type: ignore 
 
         # Put the custom colors in a list. Best practice is to only use
         # colors that we are using for actual missions.
