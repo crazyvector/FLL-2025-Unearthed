@@ -78,6 +78,19 @@ class BaseRobot:
     # are needed for type checking tools like mypy or pyright.
     # https://github.com/orgs/pybricks/discussions/2164
     def __init__(self):
+        """
+        Initializes the BaseRobot with all hardware components, sensor \
+            calibration, and configuration settings.
+        - Sets up the PrimeHub with specified orientation.
+        - Prints firmware version and battery voltage information.
+        - Initializes drive motors, attachment motors, and drive base with \
+            default speed and acceleration settings.
+        - Configures color sensor and calibrates custom HSV color values for \
+            mission-specific color detection.
+        - Sets up a list of detectable colors for the color sensor.
+        - Maps custom sensor colors to default Pybricks colors for hub \
+            light feedback.
+        """
         self.hub: PrimeHub = 
             PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
         print(version)
@@ -105,7 +118,7 @@ class BaseRobot:
         self.leftAttachmentMotor: Motor = Motor(Port.B)
         self.rightAttachmentMotor: Motor = Motor(Port.D)
         self.leftAttachmentMotor.control.limits(acceleration=20000)
-        self.leftAttachmentMotor.control.limits(acceleration=20000)
+        self.rightAttachmentMotor.control.limits(acceleration=20000)
 
         self.colorSensor: ColorSensor = ColorSensor(Port.F)
 
@@ -159,16 +172,16 @@ class BaseRobot:
             Color.SENSOR_MAGENTA,  # type: ignore
             Color.SENSOR_ORANGE,  # type: ignore
             Color.SENSOR_DARKGRAY,  # type: ignore
-            Color.SENSOR_NONE,  # must have SENSOR_NONE. Do not comment # type: ignore
+            Color.SENSOR_NONE,  # Do not comment this out # type: ignore
             Color.SENSOR_LIME,  # type: ignore
         ]
 
-        # Set the detectable colors usisng our list
+        # Set the detectable colors using our list
         self.colorSensor.detectable_colors(self.sensorColors)
 
-        # Translates our costom colors into the default pybricks colors
-        # Used to set the hub light to the correct color. It dodesn't
-        # matter if there are extra colors in here that won't be detected
+        # Translates our custom colors into the default pybricks colors
+        # It doesn't matter if there are extra colors in here that won't be 
+        # detected. Used to set the hub light color to match the color sensor
         self.myColor2DefaultColorDict: dict[Color, Color] = {
             Color.SENSOR_GREEN: Color.GREEN,  # type: ignore
             Color.SENSOR_RED: Color.RED,  # type: ignore
@@ -368,13 +381,13 @@ class BaseRobot:
         stallPct: int = DEFAULT_STALL_PCT,
     ):
         """
-        Moves the left attachment motor until it stalls
+        Moves the right attachment motor until it stalls
 
         Snippet: rams
 
         Example:
 
-        >>> moveLeftAttachmentMotorUntilStalled(speedPct=50, stallPct=75)
+        >>> moveRightAttachmentMotorUntilStalled(speedPct=50, stallPct=75)
 
         Args:
 
@@ -497,7 +510,7 @@ class BaseRobot:
         wait(millis)
         self.robot.brake()
 
-    def waitForMillis(self, millis):
+    def waitForMillis(self, millis: int):
         """Wait for a specified number of milliseconds before continuing
 
         Snippet: wfm
