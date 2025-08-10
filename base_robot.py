@@ -105,8 +105,8 @@ class BaseRobot:
         self.robot: DriveBase = DriveBase(
             self.leftDriveMotor,
             self.rightDriveMotor,
-            TIRE_DIAMETER,
-            AXLE_TRACK,
+            TIRE_DIAMETER, # defined in utils.py
+            AXLE_TRACK, # defined in utils.py
         )
         # default speeds were determined by testing
         self.robot.settings(

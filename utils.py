@@ -74,7 +74,7 @@ def Rescale(
         retVal = out_max
     if retVal < out_min:
         retVal = out_min
-    return retVal * neg
+    return int(retVal) * neg
 
 
 def RescaleStraightSpeed(speedPct) -> int:
