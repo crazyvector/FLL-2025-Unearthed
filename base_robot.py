@@ -25,7 +25,6 @@ DEFAULT_TURN_SPEED_PCT = 45  #
 DEFAULT_TURN_ACCEL_PCT = 45  #
 DEFAULT_STALL_PCT = 50
 CURRENT_PYBRICKS_VERSION = "ci-release-86-v3.6.1 on 2025-03-11"
-# DEFAULT_STALL_PCT = 50  # not currently used
 
 
 class BaseRobot:
@@ -273,8 +272,8 @@ class BaseRobot:
 
     def moveLeftAttachmentMotorUntilStalled(
         self,
-        speedPct=DEFAULT_MED_MOT_SPEED_PCT,
-        stallPct=DEFAULT_STALL_PCT,
+        speedPct: int = DEFAULT_MED_MOT_SPEED_PCT, 
+        stallPct: int = DEFAULT_STALL_PCT,
     ):
         """
         Moves the left attachment motor until it stalls
@@ -486,7 +485,7 @@ class BaseRobot:
         Snippet: dfm
 
         Example:
-        >>> driveForMillis(millis=1000) #drive the robot for one sec
+        >>> br.driveForMillis(millis=1000) # drive the robot for one sec
         
         Args:
 
@@ -684,7 +683,7 @@ class BaseRobot:
         radius: int,
         dist: int,
         speedPct: int = DEFAULT_BIG_MOT_SPEED_PCT,
-        accelPct: int = DEFAULT_BIG_MOT_ACCEL_PCT,
+        accelerationPct: int = DEFAULT_BIG_MOT_ACCEL_PCT,  # Changed from accelPct
         gyro: bool = True,
         then: Stop = Stop.BRAKE,
         waiting: bool = True,
@@ -731,7 +730,7 @@ class BaseRobot:
         accelerationPct: (OPTIONAL int > 0) How fast the robot accelerates
         """
         speed = RescaleStraightSpeed(speedPct)
-        accel = RescaleStraightAccel(accelPct)
+        accel = RescaleStraightAccel(accelerationPct)
         self.robot.use_gyro(gyro)
         self.robot.settings(straight_speed=speed, straight_acceleration=accel)
         self.robot.arc(radius=radius, distance=dist, then=then, wait=waiting)
