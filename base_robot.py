@@ -91,7 +91,7 @@ class BaseRobot:
         - Maps custom sensor colors to default Pybricks colors for hub \
             light feedback.
         """
-        self.hub: PrimeHub = 
+        self.hub: PrimeHub = \
             PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
         print(version)
         v: int = self.hub.battery.voltage()
