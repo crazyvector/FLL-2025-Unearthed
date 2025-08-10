@@ -24,6 +24,7 @@ DEFAULT_BIG_MOT_ACCEL_PCT = 80
 DEFAULT_TURN_SPEED_PCT = 45  #
 DEFAULT_TURN_ACCEL_PCT = 45  #
 DEFAULT_STALL_PCT = 50
+CURRENT_PYBRICKS_VERSION = "('primehub', '3.6.1', 'ci-release-86-v3.6.1 on 2025-03-11x')"
 # DEFAULT_STALL_PCT = 50  # not currently used
 
 
@@ -93,7 +94,12 @@ class BaseRobot:
         """
         self.hub: PrimeHub = \
             PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
-        print(version)
+        print(str(version))
+        if (str(version) != CURRENT_PYBRICKS_VERSION):
+            print(
+                f"Warning: This code is designed for Pybricks version {CURRENT_PYBRICKS_VERSION}. "
+                f"Current version is {version}."
+            )
         v: int = self.hub.battery.voltage()
         vPct: int = RescaleBatteryVoltage(v)
         print(str(v))
