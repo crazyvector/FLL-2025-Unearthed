@@ -690,7 +690,7 @@ class BaseRobot:
         then: Stop = Stop.BRAKE,
         waiting: bool = True,
     ):
-        """Drive the robot in an arc for a specified distance
+        """Drive the robot in an arc for a specified distance and radius
 
         Snippet: dad
 
