@@ -95,8 +95,7 @@ class BaseRobot:
         self.hub = PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
         print(version[2])
         if version[2] != CURRENT_PYBRICKS_VERSION:
-            print("Expected Pybricks version " + CURRENT_PYBRICKS_VERSION)
-            print("Current version is " + version[2])
+            print("* * * Expected Pybricks version " + CURRENT_PYBRICKS_VERSION)
         v: int = self.hub.battery.voltage()
         vPct: int = RescaleBatteryVoltage(v)
         print(str(v))
