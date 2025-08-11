@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "pybricks==3.6.1",
-    "pybricksdev==1.0.0",
+    "pybricksdev==2.0.0",
 ]
 [tool.pyright]
 typeCheckingMode = "basic"
