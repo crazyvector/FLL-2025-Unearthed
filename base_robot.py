@@ -94,7 +94,9 @@ class BaseRobot:
         self.hub = PrimeHub(top_side=Axis.Z, front_side=-Axis.Y)  # type: ignore
         print(version[2])
         if version[2] != CURRENT_PYBRICKS_VERSION:
-            print("* * * Expected Pybricks version " + CURRENT_PYBRICKS_VERSION)
+            print(
+                "* * * Expected Pybricks version " + CURRENT_PYBRICKS_VERSION
+            )
         v: int = self.hub.battery.voltage()
         vPct: int = RescaleBatteryVoltage(v)
         print(str(v))
@@ -105,8 +107,8 @@ class BaseRobot:
         self.robot: DriveBase = DriveBase(
             self.leftDriveMotor,
             self.rightDriveMotor,
-            TIRE_DIAMETER, # defined in utils.py
-            AXLE_TRACK, # defined in utils.py
+            TIRE_DIAMETER,  # defined in utils.py
+            AXLE_TRACK,  # defined in utils.py
         )
         # default speeds were determined by testing
         self.robot.settings(
@@ -272,7 +274,7 @@ class BaseRobot:
 
     def moveLeftAttachmentMotorUntilStalled(
         self,
-        speedPct: int = DEFAULT_MED_MOT_SPEED_PCT, 
+        speedPct: int = DEFAULT_MED_MOT_SPEED_PCT,
         stallPct: int = DEFAULT_STALL_PCT,
     ):
         """
@@ -423,10 +425,8 @@ class BaseRobot:
         Snippet: dfd
         
         Example:
-        >>> br.driveForDistance(distance=100, speedPct=80) # drive 100mm at \
-        80% speed
-        >>> br.driveForDistance(distance=100, speedPct=80, then=Stop.BRAKE, \
-            continuing=True)
+        >>> br.driveForDistance(distance=100, speedPct=80) # drive 100mm at 80% speed
+        >>> br.driveForDistance(distance=100, speedPct=80, then=Stop.BRAKE, continuing=True)
 
         Args:
 
