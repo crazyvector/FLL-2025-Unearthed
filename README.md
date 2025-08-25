@@ -53,7 +53,6 @@ def Run ( br: BaseRobot ) :
     br.turnInPlace( angle  = 90  )
     br.moveLeftAttachmentMotorForDegrees(degrees=-720)
     br.waitForForwardButton  ()
-    br.driveUntilStalled(speedPct=80, stallPct=5)
     br.moveRightAttachmentMotorForMillis(millis=1500)
     br.waitForMillis(millis=1000)
     br.moveLeftAttachmentMotorUntilStalled(stallPct=100)
