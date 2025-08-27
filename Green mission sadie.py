@@ -13,15 +13,15 @@ def Run(br: BaseRobot):
 
     # to
     br.moveRightAttachmentMotorForDegrees(
-        degrees=-200, speedPct=80, waiting=False
+        degrees=-220, speedPct=80, waiting=False
     )
     br.moveLeftAttachmentMotorForDegrees(
         degrees=140, speedPct=80, waiting=False
     )
-    br.driveForDistance(distance=620, speedPct=100, then=Stop.BRAKE, gyro=True)
-    br.turnInPlace(angle=-42, speedPct=45)
+    br.driveForDistance(distance=660, speedPct=100, then=Stop.BRAKE, gyro=True)
+    br.turnInPlace(angle=-46, speedPct=45)
     br.driveForDistance(
-        distance=300, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=330, speedPct=80, then=Stop.BRAKE, waiting=True
     )
 
     # From
@@ -29,8 +29,9 @@ def Run(br: BaseRobot):
         degrees=190, speedPct=20, waiting=False
     )
     br.driveForDistance(
-        distance=-130, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=-122, speedPct=80, then=Stop.BRAKE, waiting=True
     )
+    br.moveLeftAttachmentMotorForDegrees(degrees=-100, speedPct=40)
 
 
 # Leave everything below here and don't type anything below this line
