@@ -12,31 +12,12 @@ def Run(br: BaseRobot):
     # It MUST be indented just like the lines below
 
     # to
-    br.moveRightAttachmentMotorForDegrees(
-        degrees=-220, speedPct=80, waiting=False
-    )
-    br.moveLeftAttachmentMotorForDegrees(
-        degrees=140, speedPct=80, waiting=False
-    )
-    br.driveForDistance(distance=660, speedPct=100, then=Stop.BRAKE, gyro=True)
-    br.turnInPlace(angle=-46, speedPct=45)
-    br.driveForDistance(
-        distance=330, speedPct=80, then=Stop.BRAKE, waiting=True
-    )
-
-    # From
-    br.moveRightAttachmentMotorForDegrees(
-        degrees=190, speedPct=20, waiting=False
-    )
-    br.driveForDistance(
-        distance=-122, speedPct=80, then=Stop.BRAKE, waiting=True
-    )
-    # br.moveLeftAttachmentMotorForDegrees(degrees=-100, speedPct=40)
-
-    br.driveArcDist(
-        radius=-400, dist=-750, speedPct=80, then=Stop.BRAKE, waiting=True
-    )
-
+  br.driveForDistance(distance=230, speedPct=80, then=Stop.NONE. BRAKE, waiting=True)
+  br.driveArcDist(radius=-125, dist=200, speedPct=80, then=Stop. NONE. BRAKE, waiting=True)
+  br.driveForDistance(distance=300, speedPct=80, then=Stop.BRAKE, waiting=True)
+  br.turnInPlace(angle=93, speedPct=45)
+  br.driveForDistance(distance=67, speedPct=80, then=Stop.BRAKE, waiting=True)
+  br.moveRightAttachmentMotorForDegrees(degrees=-75, speedPct=100)
 
 # Leave everything below here and don't type anything below this line
 # If running this program directly (not from the master program), this is
