@@ -9,11 +9,12 @@ from base_robot import *
 # "Run(br)" method.
 def Run(br: BaseRobot):
     # Your mission code goes here, step-by-step
-    # It MUST be indented just like the lines below
+    #     # It MUST be indented just like the lines below
 
     # dfd
-   br.driveForDistance(500)
-   br.curve(angle=-45, radius=100)
+    br.moveRightAttachmentMotorForDegrees(degrees=-48)
+    br.driveForDistance(875)
+    br.turnInPlace(90)
 
 # Leave everything below here and don't type anything below this line
 # If running this program directly (not from the master program), this is
