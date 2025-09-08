@@ -12,14 +12,23 @@ def Run(br: BaseRobot):
     # It MUST be indented just like the lines below
 
     # to
-  br.driveForDistance(distance=230, speedPct=80, then=Stop.NONE. BRAKE, waiting=True)
-  br.driveArcDist(radius=-125, dist=200, speedPct=80, then=Stop. NONE. BRAKE, waiting=True)
-  br.driveForDistance(distance=300, speedPct=80, then=Stop.BRAKE, waiting=True)
-  br.turnInPlace(angle=93, speedPct=45)
-  br.moveRightAttachmentMotorForDegrees(degrees=-75, speedPct=100)
-  br.driveForDistance(distance=74, speedPct=80, then=Stop.BRAKE, waiting=True)
- # br.moveRightAttachmentMotorForDegrees(degrees=-75, speedPct=100)
-  br.turnInPlace(angle=-70, speedPct=45)
+    br.driveForDistance(
+        distance=250, speedPct=80, then=Stop.NONE.BRAKE, waiting=True
+    )
+    br.driveArcDist(
+        radius=-90, dist=200, speedPct=80, then=Stop.NONE.BRAKE, waiting=True
+    )
+    br.turnInPlace(angle=43, speedPct=45)
+
+
+# br.driveArcDist(radius=30, dist=175, speedPct=80, then=Stop.BRAKE, waiting=True)
+
+# br.turnInPlace(angle=97, speedPct=45)
+# br.moveRightAttachmentMotorForDegrees(degrees=-75, speedPct=100)
+# br.driveForDistance(distance=81, speedPct=80, then=Stop.BRAKE, waiting=True)
+# br.moveRightAttachmentMotorForDegrees(degrees=-75, speedPct=100)
+# br.turnInPlace(angle=-70, speedPct=45)
+# br.driveArcDist(radius=420, dist=-700, speedPct=100, then=Stop.BRAKE, waiting=True)
 
 # Leave everything below here and don't type anything below this line
 # If running this program directly (not from the master program), this is
@@ -30,3 +39,4 @@ def Run(br: BaseRobot):
 if __name__ == "__main__":
     br = BaseRobot()
     Run(br)
+# write new code for passive attatchment
