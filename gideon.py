@@ -13,6 +13,7 @@ def Run(br: BaseRobot):
 
     br.driveArcDist(radius=3000, dist=700, speedPct=60, then=Stop.BRAKE, waiting=True, gyro=False)
     br.moveLeftAttachmentMotorForDegrees(degrees=600, speedPct=80) # pos deg = lower the arm
+    br.moveRightAttachmentMotorForMillis(millis=4000, speedPct=-80)
 
 
 # Leave everything below here and don't type anything below this line
