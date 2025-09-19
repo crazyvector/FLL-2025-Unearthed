@@ -13,15 +13,13 @@ def Run(br: BaseRobot):
 
     # to
     br.moveRightAttachmentMotorForDegrees(
-        degrees=-240, speedPct=80, waiting=False
+        degrees=-190, speedPct=80, waiting=False
     )
-    br.moveLeftAttachmentMotorForDegrees(
-        degrees=140, speedPct=80, waiting=False
-    )
-    br.driveForDistance(distance=660, speedPct=100, then=Stop.BRAKE, gyro=True)
+    br.driveForDistance(distance=675, speedPct=100, then=Stop.BRAKE, gyro=True)
     br.turnInPlace(angle=-46, speedPct=45)
+    br.moveRightAttachmentMotorForDegrees(degrees=7, speedPct=80)
     br.driveForDistance(
-        distance=330, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=340, speedPct=80, then=Stop.BRAKE, waiting=True
     )
 
     # From
