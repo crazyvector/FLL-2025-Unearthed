@@ -11,9 +11,15 @@ def Run(br: BaseRobot):
     # Your mission code goes here, step-by-step
     # It MUST be indented just like the lines below
 
-    # br.driveArcDist(radius=3000, dist=700, speedPct=60, then=Stop.BRAKE, waiting=True, gyro=False)
-    # br.moveLeftAttachmentMotorForDegrees(degrees=4500, speedPct=100) # pos deg = lower the arm
-    br.moveRightAttachmentMotorForMillis(millis=6000, speedPct=-80)
+    br.driveArcDist(radius=3000, dist=700, speedPct=60, then=Stop.BRAKE, waiting=True, gyro=False)
+    br.moveLeftAttachmentMotorForDegrees(degrees=-500, speedPct=100) # neg deg = lower the arm
+    dist = 110
+    br.driveForDistance(distance=-dist, speedPct=80, then=Stop.BRAKE, waiting=True)
+    for pushes in range(7):
+        br.driveForDistance(distance=dist, speedPct=80, then=Stop.BRAKE, waiting=True)
+        br.driveForDistance(distance=-dist + 40, speedPct=80, then=Stop.BRAKE, waiting=True)
+
+    # br.moveRightAttachmentMotorForMillis(millis=6000, speedPct=-80)
     # br.moveLeftAttachmentMotorForDegrees(degrees=-4500, speedPct=100) # pos deg = raise the arm
     # br.driveForDistance(distance=-700, speedPct=100, then=Stop.BRAKE, waiting=True)
 
