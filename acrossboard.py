@@ -45,30 +45,28 @@ def Run(br: BaseRobot):
     br.driveForDistance(
         distance=200, speedPct=40, then=Stop.BRAKE, waiting=False
     )
-    br.moveRightAttachmentMotorForDegrees(degrees=600, speedPct=80)
+    br.moveRightAttachmentMotorForDegrees(degrees=700, speedPct=80)
     br.waitForMillis(millis=1000)
     # Who lived here
     br.driveForDistance(
         distance=-100, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    br.turnInPlace(angle=-55, speedPct=45)
+    br.turnInPlace(angle=-62, speedPct=45)
     br.driveForDistance(
-        distance=200, speedPct=80, then=Stop.BRAKE, waiting=False
+        distance=200, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    # br.turnInPlace(angle=-44, speedPct=45)
-    # br.driveForDistance(
-    #     distance=200, speedPct=80, then=Stop.BRAKE, waiting=True
-    # )
-    br.moveRightAttachmentMotorForDegrees(degrees=-200, speedPct=100)
+    br.moveRightAttachmentMotorForDegrees(degrees=-270, speedPct=80)
     br.driveForDistance(
-        distance=-50, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=-70, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    br.moveRightAttachmentMotorForDegrees(degrees=200, speedPct=100)
-    br.driveForMillis(millis=1500, speedPct=80)
+    br.moveRightAttachmentMotorForDegrees(degrees=200, speedPct=80)
+    # home
+    br.driveArcDist(
+        radius=280, dist=400, speedPct=80, then=Stop.NONE, waiting=True
+    )
     br.driveForDistance(
-        distance=-60, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=600, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    br.turnInPlace(angle=-55, speedPct=45)
 
 
 # Leave everything below here and don't type anything below this line
