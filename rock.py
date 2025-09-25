@@ -12,18 +12,21 @@ def Run(br: BaseRobot):
     # It MUST be indented just like the lines below
 
     br.driveForDistance(
-        distance=370, speedPct=100, then=Stop.BRAKE, waiting=True
+        distance=400, speedPct=100, then=Stop.BRAKE, waiting=True
     )
+    # br.turnInPlace(angle=7, speedPct=45)
     br.moveRightAttachmentMotorForDegrees(
-        degrees=-350, speedPct=100, waiting=False
+        degrees=-150, speedPct=90, waiting=True
     )
-    br.moveLeftAttachmentMotorForDegrees(degrees=50, speedPct=100)
-    br.moveRightAttachmentMotorForDegrees(degrees=200, speedPct=100)
-    br.turnInPlace(angle=6, speedPct=45)
-    br.moveRightAttachmentMotorForDegrees(degrees=-200, speedPct=100)
-    br.moveRightAttachmentMotorForDegrees(degrees=200, speedPct=100)
-    br.turnInPlace(angle=4, speedPct=45)
-    br.moveRightAttachmentMotorForDegrees(degrees=-200, speedPct=100)
+    br.waitForMillis(millis=300)
+    # br.turnInPlace(angle=7, speedPct=100)
+    br.moveRightAttachmentMotorForDegrees(degrees=130, speedPct=90)
+    # br.turnInPlace(angle=-6, speedPct=45)
+    # br.moveRightAttachmentMotorForDegrees(degrees=-130, speedPct=90)
+    # br.waitForMillis(millis=600)
+    # br.moveRightAttachmentMotorForDegrees(degrees=130, speedPct=90)
+    # br.turnInPlace(angle=-4, speedPct=45)
+    # br.moveRightAttachmentMotorForDegrees(degrees=-130, speedPct=90)
     br.driveForDistance(
         distance=-400, speedPct=80, then=Stop.BRAKE, waiting=True
     )
