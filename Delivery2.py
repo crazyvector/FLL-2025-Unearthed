@@ -14,7 +14,7 @@ def Run(br: BaseRobot):
     # to
 
     br.driveArcDist(
-        radius=1900, dist=1100, speedPct=80, then=Stop.BRAKE, waiting=True
+        radius=1900, dist=1090, speedPct=80, then=Stop.BRAKE, waiting=True
     )
     br.driveForDistance(
         distance=-20, speedPct=80, then=Stop.BRAKE, waiting=True
