@@ -9,16 +9,17 @@ from base_robot import *
 # "Run(br)" method.
 def Run(br: BaseRobot):
 
-    br.driveForDistance(
-        distance=100, speedPct=80, then=Stop.BRAKE, waiting=True
-    )
+    #br.driveForDistance(
+       # distance=100, speedPct=80, then=Stop.BRAKE, waiting=True)  
+    br.moveRightAttachmentMotorForDegrees(degrees=-260, speedPct=30, waiting=True)
+    #br.driveForDistance(distance=100, speedPct=80, then=Stop.BRAKE, waiting=True)
     # left attachment motor pos speed = raise; neg speed = lower
-    br.moveLeftAttachmentMotorForMillis(millis=200, speedPct=40)
-    br.moveLeftAttachmentMotorForMillis(millis=1300, speedPct=-100)
-    br.moveLeftAttachmentMotorForMillis(millis=1300, speedPct=100)
-    br.driveForDistance(
-        distance=-100, speedPct=80, then=Stop.BRAKE, waiting=True
-    )
+    # br.moveLeftAttachmentMotorForMillis(millis=200, speedPct=40)
+    # br.moveLeftAttachmentMotorForMillis(millis=1300, speedPct=-100)
+    # br.moveLeftAttachmentMotorForMillis(millis=1300, speedPct=100)
+    # br.driveForDistance(
+    # distance=-100, speedPct=80, then=Stop.BRAKE, waiting=True)
+    # br.moveRightAttachmentMotorForDegrees(degrees=100, speedPct=80)
 
 
 # Leave everything below here and don't type anything below this line
