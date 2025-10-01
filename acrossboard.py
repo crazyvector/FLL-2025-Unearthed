@@ -37,25 +37,30 @@ def Run(br: BaseRobot):
     br.moveRightAttachmentMotorForDegrees(degrees=210, speedPct=100)
     # Lifty thing
     br.turnInPlace(angle=-35, speedPct=45)
+    br.driveForDistance(
+        distance=100, speedPct=80, then=Stop.BRAKE, waiting=False
+    )
     br.moveRightAttachmentMotorForDegrees(degrees=-220, speedPct=80)
     br.driveForDistance(
-        distance=50, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=20, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    br.moveRightAttachmentMotorForDegrees(degrees=40, speedPct=80)
-    br.driveForDistance(
-        distance=200, speedPct=40, then=Stop.BRAKE, waiting=False
-    )
-    br.moveRightAttachmentMotorForDegrees(degrees=700, speedPct=80)
+    br.moveRightAttachmentMotorForDegrees(degrees=30, speedPct=80)
+    # br.driveForDistance(
+    #     distance=200, speedPct=40, then=Stop.BRAKE, waiting=False
+    # )
+    # br.moveRightAttachmentMotorForDegrees(degrees=100, speedPct=70)
     br.waitForMillis(millis=1000)
     # Who lived here
     br.driveForDistance(
         distance=-100, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    br.turnInPlace(angle=-62, speedPct=45)
+    # br.moveRightAttachmentMotorForDegrees(degrees=70, speedPct=80)
+    br.turnInPlace(angle=-68, speedPct=45)
     br.driveForDistance(
         distance=200, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    br.moveRightAttachmentMotorForDegrees(degrees=-270, speedPct=80)
+    # br.moveRightAttachmentMotorForDegrees(degrees=60, speedPct=80)
+    br.moveRightAttachmentMotorForDegrees(degrees=-60, speedPct=80)
     br.driveForDistance(
         distance=-70, speedPct=80, then=Stop.BRAKE, waiting=True
     )
