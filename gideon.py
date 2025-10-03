@@ -14,10 +14,11 @@ def Run(br: BaseRobot):
     dist = 40
 
     br.driveForDistance(
-        distance=355, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=359, speedPct=70, then=Stop.BRAKE, waiting=True
     )
     br.moveLeftAttachmentMotorForDegrees(degrees=-460, speedPct=25)
-    for pushes in range(8):
+    br.driveForDistance(distance=30, speedPct=25, then=Stop.BRAKE, waiting=True)
+    for pushes in range(9):
         br.driveForDistance(
             distance=dist, speedPct=100, then=Stop.BRAKE, waiting=True
         )
