@@ -17,7 +17,7 @@ def Run(br: BaseRobot):
     )
     br.moveRightAttachmentMotorForDegrees(degrees=200, speedPct=80)
     br.driveForDistance(
-        distance=-405, speedPct=80, then=Stop.NONE, waiting=True
+        distance=-418, speedPct=80, then=Stop.NONE, waiting=True
     )
     # br.turnInPlace(angle=-55, speedPct=45)
     # br.driveForDistance(distance=40, speedPct=80, then=Stop.BRAKE, waiting=True)
@@ -39,11 +39,11 @@ def Run(br: BaseRobot):
     br.turnInPlace(angle=-37, speedPct=45)
     br.moveRightAttachmentMotorForDegrees(degrees=-220, speedPct=80)
     br.driveForDistance(
-        distance=50, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=100, speedPct=80, then=Stop.BRAKE, waiting=True
     )
     br.moveRightAttachmentMotorForDegrees(degrees=40, speedPct=80)
     br.driveForDistance(
-        distance=200, speedPct=40, then=Stop.BRAKE, waiting=False
+        distance=140, speedPct=40, then=Stop.BRAKE, waiting=False
     )
     br.moveRightAttachmentMotorForDegrees(degrees=100, speedPct=80)
     br.waitForMillis(millis=1000)
@@ -51,13 +51,13 @@ def Run(br: BaseRobot):
     br.driveForDistance(
         distance=-100, speedPct=80, then=Stop.BRAKE, waiting=True
     )
-    br.turnInPlace(angle=-67, speedPct=45)
+    br.turnInPlace(angle=-60, speedPct=45)
     br.driveForDistance(
-        distance=220, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=230, speedPct=80, then=Stop.BRAKE, waiting=True
     )
     br.moveRightAttachmentMotorForDegrees(degrees=-100, speedPct=80)
     br.driveForDistance(
-        distance=-98, speedPct=80, then=Stop.BRAKE, waiting=True
+        distance=-78, speedPct=80, then=Stop.BRAKE, waiting=True
     )
     br.moveRightAttachmentMotorForDegrees(degrees=200, speedPct=80)
     # home
