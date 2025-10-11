@@ -1,0 +1,5 @@
+Kp=0.8
+Ki=0.02
+Kd=0.4
+base_speed=150
+target_reflection=50
